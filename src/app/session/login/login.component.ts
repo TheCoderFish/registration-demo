@@ -15,15 +15,20 @@ export class LoginComponent {
     password: new FormControl('',Validators.required),
   });
 
+  errorMessage:string;
+
   constructor(private router:Router,
     private sessionService:SessionService) {
   }
 
   login() {
-    if (this.loginForm.valid) {
+    if (this.loginForm.valid ) {
       const response = this.sessionService.valiDateCredentials(this.loginForm.getRawValue());
       if(response.validUser){
         this.router.navigate(['session/home']);
+      }else{
+
+        this.errorMessage = 'Invalid Credentials Or User Not Found'
       }
     }
   }
