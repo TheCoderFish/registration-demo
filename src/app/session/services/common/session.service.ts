@@ -23,10 +23,14 @@ export class SessionService {
   }
 
   public valiDateCredentials(inputCredentials: any) {
-    const { email, password } = inputCredentials;
-    const storedValues = this.userDetails.value;
-    if (email === storedValues.email && password === storedValues.password) {
-      return { validUser: true }
+    let responseObj = { validUser: false };
+    if (this.userDetails.value) {
+      const { email, password } = inputCredentials;
+      const storedValues = this.userDetails.value;
+      if (email === storedValues.email && password === storedValues.password) {
+        responseObj = { validUser: true }
+      }
     }
+    return responseObj;
   }
 }

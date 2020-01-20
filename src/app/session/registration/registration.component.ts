@@ -51,21 +51,6 @@ export class RegistrationComponent implements OnInit {
     return this.registrationForm.get(name) as FormControl;
   }
 
-  test() {
-    console.log(this.registrationForm.value);
-    this.registrationForm.patchValue({
-      name: "Logical",
-      email: "a@x.com",
-      password: "wd",
-      address: "w",
-      addressExt: "535 Aminas Residency, Janakinagar, Solsumba↵Brown Bungalow",
-      city: "Umbergaon",
-      country: "d",
-      phone: "AA"
-    })
-
-  }
-
   imageUpload(image: File) {
     this.registrationForm.get('image').patchValue(image);
   }
@@ -77,6 +62,8 @@ export class RegistrationComponent implements OnInit {
         console.log('User Registration Successfull');
         this.router.navigate(['session/login']);
       }
+    }else{
+      this.registrationForm.markAllAsTouched();
     }
 
   }

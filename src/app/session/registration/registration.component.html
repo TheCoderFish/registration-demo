@@ -13,7 +13,9 @@
         <div class="form-full-width">
             <p>Upload your Profile Image</p>
             <app-file-upload formControlName="image" (change)="imageUpload($event.target.files[0])"></app-file-upload>
-            <p *ngIf="getErrors('image')?.required  && getControl('image')?.touched"></p>
+            <p *ngIf="getErrors('image')?.required  && getControl('image')?.touched">
+                Image is <strong>required</strong>
+            </p>
         </div>
 
         <mat-form-field class="form-full-width">
@@ -73,5 +75,3 @@
         </div>
     </form>
 </div>
-
-<button (click)="test()">Test</button>

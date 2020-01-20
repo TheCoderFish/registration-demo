@@ -18,6 +18,8 @@
             <div class="button">
                 <button type="button" routerLink="/session/registration" mat-button>Not Registered Yet ? Go To Registration Form</button>
             </div>
+            <ng-container class="error" *ngIf="errorMessage">{{errorMessage}}</ng-container>
+
         </form>
     </mat-card-content>
 </mat-card>
