@@ -4,26 +4,42 @@
 
         <mat-form-field class="form-full-width">
             <input formControlName="name" matInput placeholder="Name">
+            <mat-error *ngIf="getErrors('name')?.required  && getControl('name')?.touched">
+                Name is <strong>required</strong>
+            </mat-error>
+
         </mat-form-field>
+
+        <div class="form-full-width">
+            <p>Upload your Profile Image</p>
+            <app-file-upload formControlName="image" (change)="imageUpload($event.target.files[0])"></app-file-upload>
+            <p *ngIf="getErrors('image')?.required  && getControl('image')?.touched"></p>
+        </div>
 
         <mat-form-field class="form-full-width">
             <input formControlName="email" matInput placeholder="Email" [errorStateMatcher]="matcher">
             <mat-hint>Errors appear instantly!</mat-hint>
-            <!--  <mat-error *ngIf="registrationForm.get('email').hasError('email') && !emailFormControl.hasError('required')">
+            <mat-error *ngIf="getErrors('email')?.email && getControl('email')?.touched">
                 Please enter a valid email address
             </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
+            <mat-error *ngIf="getErrors('email')?.required  && getControl('email')?.touched">
                 Email is <strong>required</strong>
-            </mat-error> -->
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="form-full-width">
             <input formControlName="password" type="password" matInput placeholder="Password">
+            <mat-error *ngIf="getErrors('password')?.required  && getControl('password')?.touched">
+                Password is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
 
         <mat-form-field class="form-full-width">
             <textarea formControlName="address" matInput placeholder="Address"></textarea>
+            <mat-error *ngIf="getErrors('address')?.required  && getControl('address')?.touched">
+                Address is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="form-full-width">
             <textarea formControlName="addressExt" matInput placeholder="Address 2"></textarea>
@@ -31,16 +47,31 @@
 
         <mat-form-field class="form-full-width">
             <input formControlName="city" matInput placeholder="City">
+            <mat-error *ngIf="getErrors('city')?.required  && getControl('city')?.touched">
+                City is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="form-full-width">
             <input formControlName="country" matInput placeholder="Country">
+            <mat-error *ngIf="getErrors('country')?.required  && getControl('country')?.touched">
+                Country is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="form-full-width">
             <span matPrefix>+91 &nbsp;</span>
             <input formControlName="phone" type="tel" matInput placeholder="Telephone">
             <mat-icon matSuffix>mode_edit</mat-icon>
+            <mat-error *ngIf="getErrors('phone')?.required  && getControl('phone')?.touched">
+                Phone Number is <strong>required</strong>
+            </mat-error>
         </mat-form-field>
+        <div class="form-full-width">
+            <button mat-raised-button color="primary" type="button" (click)="submitForm()">Register</button>
+            <button mat-raised-button color="accent" type="button" (click)="registrationForm.reset()">Reset</button>
+        </div>
     </form>
 </div>
+
+<button (click)="test()">Test</button>
