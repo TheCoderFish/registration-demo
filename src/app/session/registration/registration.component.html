@@ -1,0 +1,46 @@
+<div class="registration-form-container">
+    <h1 class="registration-form-header">Registration Form</h1>
+    <form class="registration-form" [formGroup]="registrationForm" novalidate>
+
+        <mat-form-field class="form-full-width">
+            <input formControlName="name" matInput placeholder="Name">
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+            <input formControlName="email" matInput placeholder="Email" [errorStateMatcher]="matcher">
+            <mat-hint>Errors appear instantly!</mat-hint>
+            <!--  <mat-error *ngIf="registrationForm.get('email').hasError('email') && !emailFormControl.hasError('required')">
+                Please enter a valid email address
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+                Email is <strong>required</strong>
+            </mat-error> -->
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+            <input formControlName="password" type="password" matInput placeholder="Password">
+        </mat-form-field>
+
+
+        <mat-form-field class="form-full-width">
+            <textarea formControlName="address" matInput placeholder="Address"></textarea>
+        </mat-form-field>
+        <mat-form-field class="form-full-width">
+            <textarea formControlName="addressExt" matInput placeholder="Address 2"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+            <input formControlName="city" matInput placeholder="City">
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+            <input formControlName="country" matInput placeholder="Country">
+        </mat-form-field>
+
+        <mat-form-field class="form-full-width">
+            <span matPrefix>+91 &nbsp;</span>
+            <input formControlName="phone" type="tel" matInput placeholder="Telephone">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+    </form>
+</div>
